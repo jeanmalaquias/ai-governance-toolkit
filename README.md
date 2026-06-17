@@ -56,14 +56,16 @@ See [docs/architecture.md](docs/architecture.md).
 
 ## Status
 
-- [ ] Model Card Generator
-- [ ] Risk Assessor
-- [ ] Guardrail Orchestrator
-- [ ] Red-Team Runner
-- [ ] Audit Logger + Aggregator
-- [ ] FastAPI surface
-- [ ] Next.js compliance dashboard
-- [ ] Docker Compose + Helm + CI
+- [x] Model Card Generator
+- [x] Risk Assessor
+- [x] Guardrail Orchestrator
+- [x] Red-Team Runner
+- [x] Audit Logger + Aggregator
+- [x] FastAPI surface + `aigov` CLI
+- [x] Next.js compliance dashboard (`dashboard/`, `next build` verified)
+- [x] Dockerfile + Docker Compose + Helm chart + CI
+
+16 tests, 100% source coverage, ruff clean; dashboard builds.
 
 ## License
 

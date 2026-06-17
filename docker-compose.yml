@@ -1,0 +1,31 @@
+# Local dev stack. The toolkit runs hermetically; Postgres + the OTel collector
+# back the audit store and tracing in a production-like setup.
+services:
+  api:
+    build: .
+    ports:
+      - "8085:8085"
+    environment:
+      DATABASE_URL: postgresql://aigov:aigov@postgres:5432/aigov
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: aigov
+      POSTGRES_PASSWORD: aigov
+      POSTGRES_DB: aigov
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    ports:
+      - "4317:4317"
+
+volumes:
+  pgdata:
