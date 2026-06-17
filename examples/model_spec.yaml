@@ -1,0 +1,22 @@
+name: Support Assistant
+version: "1.4.0"
+owner: Platform AI Team
+risk_classification: limited
+base_models:
+  - claude-opus-4-8
+intended_use: Answer customer support questions grounded in the help center.
+out_of_scope:
+  - Financial, legal, or medical advice
+  - Decisions about individuals
+training_data:
+  - Public help-center articles (CC-BY)
+metrics:
+  faithfulness: 0.94
+  answer_relevancy: 0.91
+limitations:
+  - May be out of date between help-center syncs
+mitigations:
+  - Retrieval grounding with citations
+  - Pre/post guardrails
+  - Human escalation path
+contact: ai-governance@example.com

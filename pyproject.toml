@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aigovkit"
+version = "0.1.0"
+description = "Deployable Responsible AI runtime toolkit: model cards, risk, guardrails, red-team, audit."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Jean Malaquias" }]
+dependencies = [
+    "pydantic>=2.7",
+    "pyyaml>=6.0",
+    "jinja2>=3.1",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "httpx>=0.27",
+]
+
+[project.scripts]
+aigov = "aigovkit.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aigovkit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.coverage.run]
+source = ["src/aigovkit"]

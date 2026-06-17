@@ -1,0 +1,8 @@
+# Questionnaire answers (true = control satisfied). See aigovkit.risk.QUESTIONS.
+enc_at_rest: true
+retention: true
+human_oversight: true
+input_moderation: true
+output_moderation: true
+audit_logging: true
+pii_handling: true
